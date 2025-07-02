@@ -13,94 +13,52 @@
         <div class="display">
           <input type="text" name="display">
         </div>
-        <div class="button-grid">
-          <input type="button" value="AC" onclick="display.value = ''" class="operator">
-          <input type="button" value="DEL" onclick="display.value = display.value.toString().slice(0,-1)" class="operator">
-          <input type="button" value="." onclick="display.value += '.'" class="operator">
-          <input type="button" value="/" onclick="display.value += '/'" class="operator">
-      
-          <input type="button" value="7" onclick="display.value += '7'">
-          <input type="button" value="8" onclick="display.value += '8'">
-          <input type="button" value="9" onclick="display.value += '9'">
-          <input type="button" value="*" onclick="display.value += '*'" class="operator">
-      
-          <input type="button" value="4" onclick="display.value += '4'">
-          <input type="button" value="5" onclick="display.value += '5'">
-          <input type="button" value="6" onclick="display.value += '6'">
-          <input type="button" value="-" onclick="display.value += '-'" class="operator">
-      
-          <input type="button" value="1" onclick="display.value += '1'">
-          <input type="button" value="2" onclick="display.value += '2'">
-          <input type="button" value="3" onclick="display.value += '3'">
-          <input type="button" value="+" onclick="display.value += '+'" class="operator">
-      
-          <input type="button" value="00" onclick="display.value += '00'">
-          <input type="button" value="0" onclick="display.value += '0'">
-          <input type="button" value="=" onclick="display.value = eval(display.value)" class="equal">
-      
-          <input type="button" value="sin" onclick="calculateScientific('sin')" class="operator">
-          <input type="button" value="cos" onclick="calculateScientific('cos')" class="operator">
-          <input type="button" value="tan" onclick="calculateScientific('tan')" class="operator">
-          <input type="button" value="√" onclick="calculateScientific('sqrt')" class="operator">
-          <input type="button" value="log" onclick="calculateScientific('log10')" class="operator">
-          <input type="button" value="ln" onclick="calculateScientific('log')" class="operator">
+
+        <div class="button-panel">
+          <div class="button-grid basic">
+            <input type="button" value="AC" onclick="display.value = ''" class="operator">
+            <input type="button" value="DEL" onclick="display.value = display.value.toString().slice(0,-1)" class="operator">
+            <input type="button" value="." onclick="display.value += '.'">
+            <input type="button" value="/" onclick="display.value += '/'" class="operator">
+        
+            <input type="button" value="7" onclick="display.value += '7'">
+            <input type="button" value="8" onclick="display.value += '8'">
+            <input type="button" value="9" onclick="display.value += '9'">
+            <input type="button" value="*" onclick="display.value += '*'" class="operator">
+        
+            <input type="button" value="4" onclick="display.value += '4'">
+            <input type="button" value="5" onclick="display.value += '5'">
+            <input type="button" value="6" onclick="display.value += '6'">
+            <input type="button" value="-" onclick="display.value += '-'" class="operator">
+        
+            <input type="button" value="1" onclick="display.value += '1'">
+            <input type="button" value="2" onclick="display.value += '2'">
+            <input type="button" value="3" onclick="display.value += '3'">
+            <input type="button" value="+" onclick="display.value += '+'" class="operator">
+        
+            <input type="button" value="00" onclick="display.value += '00'">
+            <input type="button" value="0" onclick="display.value += '0'">
+            <input type="button" value="=" onclick="display.value = eval(display.value)" class="equal">
+            <!-- Filler to keep grid 4x5 -->
+            <input type="button" class="placeholder" value="" disabled>
+          </div>
+          
+
+          <div class="button-grid scientific">
+            <input type="button" value="sin" onclick="calculateScientific('sin')" class="operator">
+            <input type="button" value="cos" onclick="calculateScientific('cos')" class="operator">
+            <input type="button" value="tan" onclick="calculateScientific('tan')" class="operator">
+            <input type="button" value="√" onclick="calculateScientific('sqrt')" class="operator">
+            <input type="button" value="log" onclick="calculateScientific('log10')" class="operator">
+            <input type="button" value="ln" onclick="calculateScientific('log')" class="operator">
+            <input type="button" class="placeholder" value="" disabled>
+            <input type="button" class="placeholder" value="" disabled>
+          </div>
         </div>
       </form>
     </div>
   </div>
 
-  <script>
-    function calculateScientific(func) {
-      var displayField = document.querySelector('input[name="display"]');
-      var num = parseFloat(displayField.value);
-      var result;
-      
-      if(isNaN(num)) {
-        alert("Please enter a valid number.");
-        return;
-      }
-      
-      switch(func) {
-        case 'sin':
-          result = Math.sin(num);
-          break;
-        case 'cos':
-          result = Math.cos(num);
-          break;
-        case 'tan':
-          result = Math.tan(num);
-          break;
-        case 'sqrt':
-          if(num < 0) {
-            alert("Square root of negative numbers is not defined.");
-            return;
-          }
-          result = Math.sqrt(num);
-          break;
-        case 'log10':
-          if(num <= 0) {
-            alert("Logarithm undefined for non-positive numbers.");
-            return;
-          }
-          result = Math.log10 ? Math.log10(num) : Math.log(num) / Math.LN10;
-          break;
-        case 'log':
-          if(num <= 0) {
-            alert("Logarithm undefined for non-positive numbers.");
-            return;
-          }
-          result = Math.log(num);
-          break;
-        default:
-          alert("Invalid operation.");
-          return;
-      }
-      displayField.value = result;
-    }
-
-    function toggleMode() {
-      document.body.classList.toggle("dark-mode");
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
