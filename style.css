@@ -1,27 +1,33 @@
 :root {
-  --bg-body: #f5f6fa;
-  --container-bg: #ffffff;
-  --display-bg: #f0f1f6;
-  --btn-bg: #23272f;
-  --btn-text: #fff;
-  --operator-bg: #1976d2;
+  --bg-body: #e9ebee;
+  --container-bg: rgba(255,255,255,0.85);
+  --display-bg: #f7f8fa;
+  --btn-bg: #f2f3f7;
+  --btn-text: #222;
+  --operator-bg: #ff9500;
   --operator-text: #fff;
-  --equal-bg: #43a047;
+  --equal-bg: #34c759;
   --equal-text: #fff;
-  --shadow: 0 4px 24px 0 rgba(60,60,60,0.08);
+  --shadow: 0 8px 32px 0 rgba(60,60,60,0.12);
+  --ac-bg: #ff3b30;
+  --del-bg: #5856d6;
+  --percent-bg: #5ac8fa;
 }
 
 body.dark-mode {
   --bg-body: #181a20;
-  --container-bg: #23262f;
-  --display-bg: #181a20;
+  --container-bg: rgba(34,34,38,0.95);
+  --display-bg: #23262f;
   --btn-bg: #23262f;
   --btn-text: #fff;
-  --operator-bg: #2196f3;
-  --operator-text: #fff;
-  --equal-bg: #43a047;
-  --equal-text: #fff;
-  --shadow: 0 4px 24px 0 rgba(0,0,0,0.25);
+  --operator-bg: #ffb340;
+  --operator-text: #222;
+  --equal-bg: #30d158;
+  --equal-text: #222;
+  --shadow: 0 8px 32px 0 rgba(0,0,0,0.35);
+  --ac-bg: #ff453a;
+  --del-bg: #a284ff;
+  --percent-bg: #64d2ff;
 }
 
 * {
@@ -33,29 +39,40 @@ body.dark-mode {
 
 body {
   background: var(--bg-body);
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   transition: background 0.3s;
 }
 
+.mode-toggle {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 100;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 50px;
+  background: var(--container-bg);
+  color: var(--btn-text);
+  font-size: 1.3em;
+  box-shadow: 0 2px 8px 0 rgba(60,60,60,0.10);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
 .container {
   background: var(--container-bg);
-  border-radius: 24px;
+  border-radius: 32px;
   box-shadow: var(--shadow);
   padding: 32px 20px 24px 20px;
-  max-width: 340px;
+  max-width: 370px;
   width: 100%;
-  position: relative;
+  margin: 60px auto 0 auto;
+  backdrop-filter: blur(8px);
 }
 
 .calculator {
   width: 100%;
-  margin-top: 32px;
 }
-
 
 form .display {
   display: flex;
@@ -65,14 +82,14 @@ form .display {
 form .display input {
   background: var(--display-bg);
   color: var(--btn-text);
-  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
-  font-size: 2.1em;
+  font-family: 'SF Mono', 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 2.2em;
   border: none;
-  border-radius: 16px;
+  border-radius: 18px;
   box-shadow: 0 2px 8px 0 rgba(60,60,60,0.06) inset;
   padding: 18px 16px;
   width: 100%;
-  height: 56px;
+  height: 60px;
   text-align: right;
   outline: none;
   transition: background 0.3s, color 0.3s;
@@ -81,7 +98,7 @@ form .display input {
 .button-panel {
   display: flex;
   flex-direction: column;
-  gap: 0; /* Remove space between grids */
+  gap: 0;
 }
 
 .button-grid.basic,
@@ -93,35 +110,23 @@ form .display input {
 }
 
 .button-grid.basic {
-  margin-bottom: 0; /* No gap between basic and scientific */
-}
-
-.button-grid.scientific {
-  margin-top: 0; /* No gap above scientific */
-}
-
-/* Make sure scientific keys look like basic keys */
-.button-grid.scientific input[type="button"] {
-  background: var(--btn-bg);
-  color: var(--btn-text);
-  font-size: 1.1em;
-  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .button-grid input[type="button"] {
   width: 100%;
   height: 56px;
-  font-size: 1.15em;
+  font-size: 1.25em;
   font-weight: 500;
-  border-radius: 16px;
+  border-radius: 18px;
   border: none;
   background: var(--btn-bg);
   color: var(--btn-text);
-  box-shadow: 0 2px 8px 0 rgba(30,30,30,0.10);
+  box-shadow: 0 2px 8px 0 rgba(60,60,60,0.08);
   transition: background 0.18s, color 0.18s, box-shadow 0.18s;
   outline: none;
   cursor: pointer;
-  font-family: 'Roboto', 'Poppins', Arial, sans-serif;
+  font-family: 'SF Pro Display', 'Roboto', 'Poppins', Arial, sans-serif;
   letter-spacing: 0.02em;
   margin: 0;
   display: flex;
@@ -129,33 +134,37 @@ form .display input {
   justify-content: center;
 }
 
-
 .button-grid input[type="button"]:active {
-  background: #181a20;
-  box-shadow: 0 1px 4px 0 rgba(30,30,30,0.18);
+  background: #d1d1d6;
+  box-shadow: 0 1px 4px 0 rgba(60,60,60,0.12);
 }
 
 .button-grid input.operator {
   background: var(--operator-bg);
   color: var(--operator-text);
   font-weight: 600;
-  box-shadow: 0 2px 8px 0 rgba(25, 118, 210, 0.18);
-}
-
-.button-grid input.operator:active {
-  background: #1565c0;
+  box-shadow: 0 2px 8px 0 rgba(255, 149, 0, 0.10);
 }
 
 .button-grid input.equal {
   background: var(--equal-bg);
   color: var(--equal-text);
-  font-weight: 600;
-  box-shadow: 0 2px 8px 0 rgba(67, 160, 71, 0.18);
-  grid-column: span 2;
+  font-weight: 700;
+  box-shadow: 0 2px 8px 0 rgba(52, 199, 89, 0.10);
+  grid-column: span 1;
 }
 
-.button-grid input.equal:active {
-  background: #2e7031;
+.button-grid input.ac {
+  background: var(--ac-bg);
+  color: #fff;
+}
+.button-grid input.del {
+  background: var(--del-bg);
+  color: #fff;
+}
+.button-grid input.percent {
+  background: var(--percent-bg);
+  color: #222;
 }
 
 .button-grid input.placeholder {
@@ -166,33 +175,11 @@ form .display input {
   pointer-events: none;
 }
 
-/* Scientific keys look like basic keys */
 .button-grid.scientific input[type="button"] {
   background: var(--btn-bg);
   color: var(--btn-text);
   font-size: 1.1em;
   font-weight: 500;
-}
-
-.mode-toggle {
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  padding: 7px 16px;
-  border: none;
-  border-radius: 12px;
-  background: var(--btn-bg);
-  color: var(--btn-text);
-  font-family: 'Roboto', 'Courier New', Courier, monospace;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  box-shadow: 0 2px 8px 0 rgba(60,60,60,0.06);
-}
-
-.mode-toggle:hover {
-  background: #1976d2;
-  color: #fff;
 }
 
 @media (max-width: 480px) {
