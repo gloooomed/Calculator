@@ -1,42 +1,49 @@
 # Calculator
 
-Welcome to our Calculator application! We've upgraded this tool so that it now not only handles everyday calculations but also tackles scientific ones—all while sporting a modern Android 15–inspired design.
+Welcome to the modern Calculator application! This tool now features a visually stunning, Apple-style interface with smooth animations, full responsiveness, and both basic and scientific calculation capabilities.
 
 ## Features
 
+- **Apple-Inspired Modern UI:**  
+  Clean, rounded design inspired by the Apple Calculator, with beautiful subtle shadows and animations.
+
+- **Responsive Design:**  
+  Fully adapts to all screen sizes—desktop, tablet, and mobile—for a seamless experience everywhere.
+
+- **Dark & Light Mode:**  
+  Instantly toggle between elegant dark and light themes with a floating button for comfortable use in any environment.
+
+- **Smooth Animations:**  
+  Subtle fade and pop effects on buttons and panels for a premium, interactive feel.
+
 - **Basic Operations:**  
-  Easily perform addition, subtraction, multiplication, division, and more with a click.
+  Effortlessly perform addition, subtraction, multiplication, division, and more.
 
 - **Scientific Functions:**  
   Expand your calculations with:
-  - Trigonometric functions: sine, cosine, and tangent  
-  - Square Root  
-  - Logarithm (base 10)  
-  - Natural Logarithm  
-
-- **Modern Design & Themes:**  
-  - A neat, grid-based button layout with improved visual clarity.
-  - A toggle button to switch between dark and light modes for optimal viewing in any lighting condition.
+  - Trigonometric functions: sine, cosine, tangent
+  - Square root
+  - Logarithm (base 10)
+  - Natural logarithm
+  - π and e constants
 
 ## How to Use
 
 1. Open the `index.html` file in your web browser.
 2. Use the on-screen buttons:
-   - For basic math, simply click the number buttons and operators (+, -, *, /).
-   - For scientific operations, enter a number then click:
-     - `sin`, `cos`, or `tan` for trigonometric functions,
-     - `√` for square roots,
-     - `log` for logarithm (base 10),
-     - `ln` for natural logarithm.
-3. To switch between dark and light modes, click the **Toggle Mode** button located at the top-right of the calculator.
-4. The result is displayed instantly in the input field.
+   - For basic math, click the number and operator buttons.
+   - For scientific operations, enter a number and click the desired function (e.g., `sin`, `cos`, `tan`, `√`, `log`, `ln`, `π`, `e`).
+3. Toggle dark/light mode using the floating button at the top-right corner.
+4. Results appear instantly in the display field.
 
 ## Technical Details
 
 - **HTML & JavaScript:**  
-  The entire user interface and calculation logic reside in the `index.html` file.
+  All UI and calculation logic are in `index.html` and `script.js`.
 
 - **CSS:**  
-  Styling and responsiveness are managed with `style.css`, following modern design practices to ensure a consistent experience across all devices.
+  All styling, responsiveness, and animations are handled in `style.css`, using CSS variables for easy theme management.
 
-Enjoy exploring the enhanced and modern capabilities of our calculator!
+---
+
+Enjoy a beautiful, modern, and powerful calculator experience!
