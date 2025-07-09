@@ -45,8 +45,8 @@ body {
 
 .mode-toggle {
   position: fixed;
-  top: 32px;
-  right: 32px;
+  top: 24px;
+  right: 24px;
   z-index: 100;
   padding: 10px 16px;
   border: none;
@@ -56,7 +56,12 @@ body {
   font-size: 1.3em;
   box-shadow: 0 2px 8px 0 rgba(60,60,60,0.10);
   cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+  will-change: background, color, box-shadow, transform;
+}
+.mode-toggle:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 4px 0 rgba(60,60,60,0.18);
 }
 
 .container {
@@ -68,6 +73,13 @@ body {
   width: 100%;
   margin: 60px auto 0 auto;
   backdrop-filter: blur(8px);
+  transition: background 0.3s, box-shadow 0.3s;
+  animation: fadeIn 0.7s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px);}
+  to { opacity: 1; transform: translateY(0);}
 }
 
 .calculator {
@@ -93,6 +105,7 @@ form .display input {
   text-align: right;
   outline: none;
   transition: background 0.3s, color 0.3s;
+  animation: fadeIn 0.7s 0.1s cubic-bezier(.4,0,.2,1) backwards;
 }
 
 .button-panel {
@@ -113,7 +126,6 @@ form .display input {
   margin-bottom: 10px;
 }
 
-
 .button-grid input[type="button"] {
   width: 100%;
   height: 56px;
@@ -124,7 +136,7 @@ form .display input {
   background: var(--btn-bg);
   color: var(--btn-text);
   box-shadow: 0 2px 8px 0 rgba(60,60,60,0.06);
-  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.15s;
   outline: none;
   cursor: pointer;
   font-family: 'SF Pro Display', 'Roboto', 'Poppins', Arial, sans-serif;
@@ -133,11 +145,18 @@ form .display input {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: popIn 0.5s cubic-bezier(.4,0,.2,1);
+  will-change: background, color, box-shadow, transform;
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85);}
+  to { opacity: 1; transform: scale(1);}
 }
 
 .button-grid input[type="button"]:active {
   background: #b0b3b8;
   box-shadow: 0 1px 4px 0 rgba(60,60,60,0.12);
+  transform: scale(0.96);
 }
 
 body.dark-mode .button-grid input[type="button"] {
@@ -154,6 +173,7 @@ body.dark-mode .button-grid input[type="button"]:active {
   color: var(--operator-text);
   font-weight: 600;
   box-shadow: 0 2px 8px 0 rgba(255, 149, 0, 0.10);
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.15s;
 }
 
 body.dark-mode .button-grid input.operator {
@@ -215,10 +235,17 @@ body.dark-mode .button-grid input.percent {
   font-weight: 500;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .container {
     max-width: 98vw;
     padding: 10px 2vw 16px 2vw;
+    border-radius: 18px;
+  }
+  .mode-toggle {
+    top: 12px;
+    right: 12px;
+    font-size: 1.1em;
+    padding: 8px 12px;
   }
   .button-grid.basic,
   .button-grid.scientific {
@@ -228,10 +255,22 @@ body.dark-mode .button-grid input.percent {
   .button-grid input[type="button"] {
     height: 44px;
     font-size: 1em;
+    border-radius: 12px;
   }
   form .display input {
     font-size: 1.2em;
     height: 38px;
     padding: 10px 8px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 4vw 1vw 10vw 1vw;
+  }
+  .mode-toggle {
+    font-size: 1em;
+    padding: 6px 10px;
   }
 }
