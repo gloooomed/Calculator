@@ -8,7 +8,7 @@ Welcome to the modern Calculator application! This tool now features a visually 
   Clean, rounded design inspired by the Apple Calculator, with beautiful subtle shadows and animations.
 
 - **Responsive Design:**  
-  Fully adapts to all screen sizes—desktop, tablet, and mobile for a seamless experience everywhere.
+  Fully adapts to all screen sizes desktop, tablet, and mobile for a seamless experience everywhere.
 
 - **Dark & Light Mode:**  
   Instantly toggle between elegant dark and light themes with a floating button for comfortable use in any environment.
